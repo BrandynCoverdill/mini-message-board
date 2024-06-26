@@ -1,5 +1,5 @@
 import {Router} from 'express';
-import {messages} from './index.js';
+import {Message} from '../modules/Message.js';
 
 export const newRouter = new Router();
 
@@ -7,9 +7,12 @@ newRouter.get('/', (req, res, next) => {
 	res.render('form', {title: 'Add a new Message'});
 });
 
-newRouter.post('/', (req, res, next) => {
+newRouter.post('/', async (req, res, next) => {
 	const data = req.body;
-	messages.push({user: data.author, text: data.text, added: new Date()});
+	await Message.create({
+		text: data.text,
+		user: data.author,
+	});
 	res.redirect('/');
 	next();
 });

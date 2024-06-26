@@ -1,25 +1,14 @@
 import {Router} from 'express';
+import {Message} from '../modules/Message.js';
 
 export const indexRouter = new Router();
 
-export const messages = [
-	{
-		text: 'Hi there!',
-		user: 'Amando',
-		added: new Date(),
-	},
-	{
-		text: 'Hello World!',
-		user: 'Charles',
-		added: new Date(),
-	},
-	{
-		text: 'Brandyn is awesome!',
-		user: 'Brandyn',
-		added: new Date(),
-	},
-];
-
-indexRouter.get('/', (req, res, next) => {
-	res.render('index', {title: 'Mini Messageboard', messages: messages});
+indexRouter.get('/', async (req, res, next) => {
+	try {
+		const messages = await Message.findAll();
+		res.render('index', {title: 'Mini Messageboard', messages: messages});
+	} catch (err) {
+		console.error('Failed to retrieve messages: ', err);
+		res.status(500).send('Error retrieving messages from the database.');
+	}
 });
