@@ -36,7 +36,7 @@ const authenticateDatabase = async () => {
 	try {
 		await sequelize.authenticate();
 	} catch (err) {
-		console.error(`Could not connect to ${process.env.MYSQL_SCHEMA}: `, err);
+		console.error(`Could not connect to ${process.env.MYSQLDATABASE}: `, err);
 	}
 };
 
