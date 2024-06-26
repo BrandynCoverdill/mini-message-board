@@ -97,7 +97,7 @@ const run = async () => {
 	// Populate database with sample data
 	await populateDatabase();
 
-	const PORT = process.env.MYSQLPORT || 3000;
+	const PORT = process.env.PORT || 3000;
 
 	// Run the server
 	app.listen(PORT, '0.0.0.0', () => {
