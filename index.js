@@ -100,7 +100,7 @@ const run = async () => {
 	const PORT = process.env.MYSQLPORT || 3000;
 
 	// Run the server
-	app.listen(PORT, () => {
+	app.listen(PORT, '0.0.0.0', () => {
 		console.log(`Server started on port 8080`);
 	});
 };
