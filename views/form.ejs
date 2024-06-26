@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title><%= title %></title>
+	</head>
+	<body>
+		<h1><%= title %></h1>
+		<a href="/">See messages</a>
+		<form
+			action="/new"
+			method="post"
+			style="
+				display: flex;
+				flex-direction: column;
+				padding-inline: 2em;
+				gap: 0.5em;
+			"
+		>
+			<input type="text" name="author" id="author" placeholder="Your name" />
+			<textarea
+				name="text"
+				id="text"
+				placeholder="Message text"
+				rows="5"
+			></textarea>
+			<button type="submit">Add new message</button>
+		</form>
+	</body>
+</html>
