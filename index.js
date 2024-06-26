@@ -32,7 +32,7 @@ app.use('/new', newRouter);
  * Tries to connect to the database
  */
 const authenticateDatabase = async () => {
-	console.log(`Connecting to ${process.env.MYSQL_SCHEMA}..`);
+	console.log(`Connecting to ${process.env.MYSQLDATABASE}..`);
 	try {
 		await sequelize.authenticate();
 	} catch (err) {
